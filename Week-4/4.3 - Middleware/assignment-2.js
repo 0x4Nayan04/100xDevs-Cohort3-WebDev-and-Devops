@@ -1,5 +1,5 @@
 // Assignment #6 - You have to create a middleware for rate limiting a users request based on their username passed in the header
-const express = require('express');
+const express = require("express");
 
 const app = express();
 
@@ -10,13 +10,13 @@ setInterval(() => {
 }, 1000);
 
 app.use(function (req, res, next) {
-  const userId = req.headers['user-id'];
+  const userId = req.headers["user-id"];
 
   if (numberOfRequestsForUser[userId]) {
     numberOfRequestsForUser[userId]++;
 
     if (numberOfRequestsForUser[userId] > 5) {
-      res.status(404).send('No Entry!');
+      res.status(404).send("No Entry!");
     } else {
       next();
     }
@@ -26,12 +26,12 @@ app.use(function (req, res, next) {
   }
 });
 
-app.get('/user', function (req, res) {
-  res.status(200).json({ name: 'Bharat' });
+app.get("/user", function (req, res) {
+  res.status(200).json({ name: "Nayan Swarnkar" });
 });
 
-app.post('/user', function (req, res) {
-  res.status(200).json({ msg: 'created dummy user' });
+app.post("/user", function (req, res) {
+  res.status(200).json({ msg: "created dummy user" });
 });
 
 app.listen(3000);
