@@ -1,5 +1,4 @@
-// Assignment #2 - Trying to code a filesystem based todo app and store data into the file
-// this means every time we hti the request we need to save the task a JSON File.
+// Assignment #2 - Trying to code a filesystem based todo app and store data into the file this means every time we hit the request we need to save the task a JSON File.
 const express = require("express");
 const fs = require("fs");
 
