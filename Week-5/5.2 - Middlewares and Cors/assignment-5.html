@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sum Endpoint</title>
+  </head>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <body>
+    <h1>Sum Endpoint</h1>
+    <input type="text" id="a" placeholder="Enter the value of a" />
+    <input type="text" id="b" placeholder="Enter the value of b" />
+    <input type="button" value="Submit" id="submit" onclick="submitForm()" />
+    <script>
+      async function submitForm() {
+        const a = parseInt(document.getElementById("a").value);
+        const b = parseInt(document.getElementById("b").value);
+
+        try {
+          const res = await axios.post("http://localhost:3000/sum", {
+            a: a,
+            b: b,
+          });
+          alert("The sum is: " + res.data.ans);
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      }
+    </script>
+  </body>
+</html>
