@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment-1</title>
+  </head>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <body>
+    <h1>Assignment-1</h1>
+
+    <div>
+      <h3>SignUp</h3>
+      <input type="text" placeholder="Username" id="SignupUsername" />
+      <input type="password" placeholder="Password" id="SignupPassword" />
+      <input type="button" value="Submit" onclick="Signup()" />
+    </div>
+
+    <div>
+      <h3>Signin</h3>
+      <input type="text" placeholder="Username" id="SigninUsername" />
+      <input type="password" placeholder="Password" id="SigninPassword" />
+      <input type="button" value="Submit" onclick="Signin()" />
+    </div>
+
+    <div>
+      <h3>Get User Information</h3>
+      <input type="button" value="Get User Information" onclick="GetUSER()" />
+    </div>
+
+    <script>
+      async function Signup() {
+        const username = document.getElementById("SignupUsername").value;
+        const password = document.getElementById("SignupPassword").value;
+
+        try {
+          const response = await axios.post("http://localhost:3000/signup", {
+            username,
+            password,
+          });
+          console.log(response.data);
+        } catch (error) {
+          console.error(error.response ? error.response.data : error.message);
+        }
+      }
+
+      async function Signin() {
+        const username = document.getElementById("SigninUsername").value;
+        const password = document.getElementById("SigninPassword").value;
+
+        try {
+          const response = await axios.post("http://localhost:3000/signin", {
+            username,
+            password,
+          });
+          localStorage.setItem("token", response.data.token);
+          console.log(response.data);
+        } catch (error) {
+          console.error(error.response ? error.response.data : error.message);
+        }
+      }
+
+      async function GetUSER() {
+        const token = localStorage.getItem("token");
+
+        try {
+          const response = await axios.get("http://localhost:3000/me", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          console.log(response.data);
+        } catch (error) {
+          console.error(error.response ? error.response.data : error.message);
+        }
+      }
+    </script>
+  </body>
+</html>
