@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo Application</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>Todo Application</h1>
+    <div id="auth-section">
+      <div>
+        <h2>SignUp</h2>
+        <input type="text" id="signup-username" placeholder="Username" />
+        <input type="password" id="signup-password" placeholder="Password" />
+        <button onclick="signUp()">SignUp</button>
+      </div>
+      <div>
+        <h2>SignIn</h2>
+        <input type="text" id="signin-username" placeholder="Username" />
+        <input type="password" id="signin-password" placeholder="Password" />
+        <button onclick="signIn()">SignIn</button>
+      </div>
+    </div>
+    <div id="todo-section" style="display: none">
+      <button onclick="signOut()">Sign Out</button>
+      <div>
+        <h2>Create Todo</h2>
+        <input type="text" id="todo-title" placeholder="Title" />
+        <button onclick="createTodo()">Create Todo</button>
+      </div>
+      <div>
+        <h2>Todos</h2>
+        <ul id="todo-list"></ul>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
